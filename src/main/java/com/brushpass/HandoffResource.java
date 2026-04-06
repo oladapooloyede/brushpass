@@ -19,7 +19,9 @@ import java.net.URL;
 public class HandoffResource {
 
     private static final Logger LOG = Logger.getLogger(HandoffResource.class);
-    private static final String VALIDATE_URL = "https://station-zero-player1.apps.cluster-spq9k.spq9k.sandbox5413.opentlc.com/validate/pin";
+
+    @org.eclipse.microprofile.config.inject.ConfigProperty(name = "brushpass.validate-url")
+    String validateUrl;
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -63,8 +65,8 @@ public class HandoffResource {
 
         // Validate PIN against station-zero
         try {
-            String validateUrl = VALIDATE_URL + "?pin=" + java.net.URLEncoder.encode(pin, "UTF-8");
-            LOG.info("Validating PIN at: " + validateUrl);
+            String validateUrlWithPin = validateUrl + "?pin=" + java.net.URLEncoder.encode(pin, "UTF-8");
+            LOG.info("Validating PIN at: " + validateUrlWithPin);
 
             // Use HttpURLConnection with TLS trust-all for simplicity
             javax.net.ssl.TrustManager[] trustAll = new javax.net.ssl.TrustManager[]{
@@ -77,7 +79,7 @@ public class HandoffResource {
             javax.net.ssl.SSLContext sc = javax.net.ssl.SSLContext.getInstance("TLS");
             sc.init(null, trustAll, new java.security.SecureRandom());
 
-            URL url = new URL(validateUrl);
+            URL url = new URL(validateUrlWithPin);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             if (conn instanceof javax.net.ssl.HttpsURLConnection) {
                 ((javax.net.ssl.HttpsURLConnection) conn).setSSLSocketFactory(sc.getSocketFactory());
