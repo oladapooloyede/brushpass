@@ -4,9 +4,9 @@ kind: Service
 metadata:
   annotations:
     app.quarkus.io/quarkus-version: 3.19.4
-    app.quarkus.io/commit-id: d57d6769fded1d7021b69d4b65c4de8abd78cb89
+    app.quarkus.io/commit-id: 38faeedbc2e624b7a105696aa8599bbedd20af18
     app.quarkus.io/vcs-uri: https://github.com/oladapooloyede/brushpass.git
-    app.quarkus.io/build-timestamp: 2026-04-06 - 19:54:42 +0000
+    app.quarkus.io/build-timestamp: 2026-04-06 - 20:40:18 +0000
   labels:
     app.kubernetes.io/name: brushpass
     app.kubernetes.io/version: 1.0.0
@@ -28,9 +28,9 @@ kind: Deployment
 metadata:
   annotations:
     app.quarkus.io/quarkus-version: 3.19.4
-    app.quarkus.io/commit-id: d57d6769fded1d7021b69d4b65c4de8abd78cb89
+    app.quarkus.io/commit-id: 38faeedbc2e624b7a105696aa8599bbedd20af18
     app.quarkus.io/vcs-uri: https://github.com/oladapooloyede/brushpass.git
-    app.quarkus.io/build-timestamp: 2026-04-06 - 19:54:42 +0000
+    app.quarkus.io/build-timestamp: 2026-04-06 - 20:40:18 +0000
   labels:
     app.kubernetes.io/name: brushpass
     app.kubernetes.io/version: 1.0.0
@@ -40,20 +40,20 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: brushpass
       app.kubernetes.io/version: 1.0.0
+      app.kubernetes.io/name: brushpass
   template:
     metadata:
       annotations:
         alpha.image.policy.openshift.io/resolve-names: '*'
         app.quarkus.io/quarkus-version: 3.19.4
-        app.quarkus.io/commit-id: d57d6769fded1d7021b69d4b65c4de8abd78cb89
+        app.quarkus.io/commit-id: 38faeedbc2e624b7a105696aa8599bbedd20af18
         app.quarkus.io/vcs-uri: https://github.com/oladapooloyede/brushpass.git
-        app.quarkus.io/build-timestamp: 2026-04-06 - 19:54:42 +0000
+        app.quarkus.io/build-timestamp: 2026-04-06 - 20:40:18 +0000
       labels:
         app.kubernetes.io/managed-by: quarkus
-        app.kubernetes.io/name: brushpass
         app.kubernetes.io/version: 1.0.0
+        app.kubernetes.io/name: brushpass
     spec:
       containers:
         - env:
